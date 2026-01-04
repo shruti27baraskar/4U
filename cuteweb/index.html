@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moments For You</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Trad&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- GLOBAL STYLES --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    /* --- PAGE 1: HERO SECTION --- */
+    .hero-section {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FFF2C6;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Playwrite US Trad', cursive;
+      padding: 20px; /* Added for mobile breathing room */
+    }
+
+    .bg-heart-p1 {
+      position: absolute;
+      color: #ff9db5;
+      font-size: 2.2rem;
+      opacity: 0.9;
+      animation: floatBG 10s linear infinite;
+    }
+
+    @keyframes floatBG {
+      0% { transform: translateY(100vh) scale(0.9); opacity: 0; }
+      20% { opacity: 0.9; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    .hero-container {
+      text-align: center;
+      background: #FFF8DE;
+      padding: 2rem; /* Adjusted for mobile */
+      width: 90%;
+      max-width: 500px;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-container h1 {
+      font-size: 1.8rem; /* Smaller for mobile */
+      color: #7a1f1f;
+      min-height: 3.5rem;
+    }
+
+    /* Desktop Heading Adjustment */
+    @media (min-width: 768px) {
+      .hero-container { padding: 3rem 4rem; }
+      .hero-container h1 { font-size: 2.5rem; }
+    }
+
+    .hero-button {
+      margin-top: 2rem;
+      padding: 0.7rem 1.6rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      background: #ff9db5;
+      color: #7a1f1f;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.2s;
+    }
+
+    /* --- PAGE 2: FAIRY SECTION --- */
+    .fairy-section {
+      min-height: 100vh;
+      padding: 4rem 1rem;
+      text-align: center;
+      background: #fff4ec;
+    }
+
+    .fairy-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #7a1f1f;
+      font-family: cursive;
+    }
+
+    .fairy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .fairy-card {
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+      transition: all 1.2s ease;
+      width: 100%;
+    }
+
+    .fairy-card.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .fairy-frame {
+      position: relative;
+      padding: 12px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #ffd1e8, #ffe6b3);
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+      overflow: hidden;
+    }
+
+    .fairy-frame img {
+      width: 100%;
+      height: 300px; /* Kept fixed height for consistency */
+      object-fit: cover;
+      border-radius: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .fairy-text {
+      margin-top: 1.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      line-height: 1.4;
+      color: #7a1f1f;
+    }
+
+    /* --- PAGE 3: LETTER SECTION --- */
+    .letter-section {
+      min-height: 100vh;
+      background-color: #a7c7f9;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px;
+    }
+
+    .open-btn {
+      z-index: 100;
+      background-color: #ff91b4;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .letter {
+      background-color: #ffcbb3;
+      padding: 20px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 350px; /* Ensures it doesn't get too wide on PC */
+      font-size: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      z-index: 50;
+      pointer-events: none;
+      line-height: 1.6;
+    }
+
+    .letter.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Particles & Background Hearts */
+    .heart { position: absolute; bottom: -20px; animation: floatHeart 4s ease forwards; z-index: 3; }
+    @keyframes floatHeart { 0% { transform: translateY(0) scale(0.6); opacity: 1; } 100% { transform: translateY(-180px) scale(1.5); opacity: 0; } }
+    
+    .floating-heart-p3 {
+      position: absolute; width: 20px; height: 20px;
+      background-color: #ff6f8a; transform: rotate(-45deg);
+      animation: floatP3 6s linear infinite; border-radius: 50%; opacity: 0.8;
+    }
+    .floating-heart-p3::before, .floating-heart-p3::after {
+      content: ""; position: absolute; width: 20px; height: 20px;
+      background-color: #ff6f8a; border-radius: 50%;
+    }
+    .floating-heart-p3::before { top: -10px; left: 0; }
+    .floating-heart-p3::after { left: 10px; top: 0; }
+
+    @keyframes floatP3 {
+      0% { transform: translate(0,0) rotate(-45deg); opacity: 0.8; }
+      100% { transform: translate(calc(var(--x) * 2px), -200px) rotate(-45deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero-section">
+    <div class="bg-heart-p1" style="left: 5%; animation-delay: 0s;">♥</div>
+    <div class="bg-heart-p1" style="left: 25%; animation-delay: 2s;">♡</div>
+    <div class="bg-heart-p1" style="left: 50%; animation-delay: 4s;">♥</div>
+    <div class="bg-heart-p1" style="left: 75%; animation-delay: 1s;">♡</div>
+    <div class="bg-heart-p1" style="left: 90%; animation-delay: 3s;">♥</div>
+
+    <div class="hero-container">
+      <h1 id="typewriter-text"></h1>
+      <button class="hero-button" onclick="startTyping()"> from shruvii!</button>
+    </div>
+  </section>
+
+  <section class="fairy-section" id="fairy">
+    <h2 class="fairy-title">Little moments with you 💗</h2>
+    <div class="fairy-grid">
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="pico.jpeg" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">You are part of my family</p>
+      </div>
+
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="picf.jpeg" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">The only person my eyes adore</p>
+      </div>
+
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="pictt.jpeg" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">The most gentle and masculine man of my life</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="letter-section">
+    <button class="open-btn" id="openBtn">open me</button>
+    
+    <div class="letter" id="letter">
+      <p>This for you ,<br><br>
+      You are special not just bcoz you are adorable but bcoz you are the most important part of my life my lucky charm and the biggest supportive backbone. Read this cause everything is just based on you. Let me describe you, your hairs are the craziest thing I want to play with your brown eyes makes the sunset even unattractive. Your cheeks are my fav mine kuchikuchi. Your lips are more sweeter than honey. Your shoulder hold more responsibilities but I m always with you don't worry. Holding your hand is the best decision of my life ever. Nothing feels more safe than your hug and walking with you never made me feel tired. I really love you so much will you be mine forever in this universe. It will always remain "shruvii" bcoz shruti is always incomplete without her vinay. 💖</p>
+    </div>
+
+    <div class="floating-heart-p3" style="left: 10%; top: 90%; animation-delay: 0s; --x: 20;"></div>
+    <div class="floating-heart-p3" style="left: 80%; top: 95%; animation-delay: 1s; --x: -30;"></div>
+    <div class="floating-heart-p3" style="left: 50%; top: 85%; animation-delay: 2s; --x: 15;"></div>
+    <div class="floating-heart-p3" style="left: 30%; top: 90%; animation-delay: 0.5s; --x: -20;"></div>
+    <div class="floating-heart-p3" style="left: 70%; top: 92%; animation-delay: 1.5s; --x: 25;"></div>
+
+    <audio id="bgMusic" src="perfect.mp3" preload="auto"></audio>
+  </section>
+
+  <script>
+    /* TYPEWRITER SCRIPT */
+    const message = "I love you so much ";
+    let typeIndex = 0;
+    let typingStarted = false;
+    function startTyping() {
+      if (typingStarted) return;
+      typingStarted = true;
+      typeWriter();
+    }
+    function typeWriter() {
+      if (typeIndex < message.length) {
+        document.getElementById("typewriter-text").textContent += message.charAt(typeIndex);
+        typeIndex++;
+        setTimeout(typeWriter, 120);
+      }
+    }
+
+    /* FAIRY OBSERVER SCRIPT */
+    const cards = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          const frame = entry.target.querySelector(".fairy-frame");
+          if (!frame.dataset.started) {
+            frame.dataset.started = "true";
+            const sparkleLayer = document.createElement("div");
+            sparkleLayer.className = "sparkle-layer";
+            frame.appendChild(sparkleLayer);
+            startFairyEffects(entry.target.querySelector(".heart-layer"), sparkleLayer);
+          }
+        }
+      });
+    }, { threshold: 0.2 }); /* Trigger earlier on mobile */
+    cards.forEach(card => observer.observe(card));
+
+    function startFairyEffects(heartLayer, sparkleLayer) {
+      setInterval(() => {
+        const h = document.createElement("div"); h.className = "heart";
+        h.innerHTML = Math.random() > 0.5 ? "❤️" : "💗";
+        h.style.left = Math.random() * 90 + "%";
+        h.style.fontSize = (14 + Math.random() * 18) + "px";
+        heartLayer.appendChild(h); setTimeout(() => h.remove(), 4000);
+      }, 800);
+    }
+
+    /* LETTER SCRIPT */
+    const openBtn = document.getElementById('openBtn');
+    const letter = document.getElementById('letter');
+    const bgMusic = document.getElementById('bgMusic');
+    openBtn.addEventListener('click', () => {
+      letter.classList.toggle('show');
+      if (letter.classList.contains('show')) {
+        bgMusic.play().catch(() => {});
+        openBtn.textContent = "close me";
+      } else {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        openBtn.textContent = "open me";
+      }
+    });
+  </script>
+</body>
+</html>

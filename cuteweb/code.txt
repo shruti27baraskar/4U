@@ -1,0 +1,1205 @@
+cute website 
+# page 1 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Have a Great Day</title>
+
+  <!-- Playwrite-style handwritten font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Trad&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FFF2C6;
+      overflow: hidden;
+      font-family: 'Playwrite US Trad', cursive;
+    }
+
+    /* Floating hearts background */
+    .heart {
+      position: absolute;
+      color: #ff9db5;
+      font-size: 2.2rem;
+      opacity: 0.9;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.9);
+        opacity: 0;
+      }
+      20% { opacity: 0.9; }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+      
+
+    .container {
+      text-align: center;
+      background: #FFF8DE;
+      padding: 3rem 4rem;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .line {
+      width: 4px;
+      height: 50px;
+      background: #8CA9FF;
+      margin: 0 auto 1rem auto;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #7a1f1f;
+      min-height: 3rem;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 0.7rem 1.6rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      background: #ff9db5;
+      color: #7a1f1f;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hearts -->
+  <div class="heart" style="left: 5%; animation-delay: 0s;">♥</div>
+  <div class="heart" style="left: 12%; animation-delay: 2s;">♡</div>
+  <div class="heart" style="left: 20%; animation-delay: 4s;">♥</div>
+  <div class="heart" style="left: 28%; animation-delay: 1s;">♡</div>
+  <div class="heart" style="left: 36%; animation-delay: 3s;">♥</div>
+  <div class="heart" style="left: 44%; animation-delay: 5s;">♡</div>
+  <div class="heart" style="left: 52%; animation-delay: 2s;">♥</div>
+  <div class="heart" style="left: 60%; animation-delay: 4s;">♡</div>
+  <div class="heart" style="left: 68%; animation-delay: 1s;">♥</div>
+  <div class="heart" style="left: 76%; animation-delay: 3s;">♡</div>
+  <div class="heart" style="left: 84%; animation-delay: 5s;">♥</div>
+  <div class="heart" style="left: 92%; animation-delay: 2s;">♡</div>
+
+  <div class="container">
+    
+    <h1 id="text"></h1>
+    <button onclick="startTyping()">this is for you !</button>
+  </div>
+
+  <script>
+    const message = "Have a great dayyy";
+    let index = 0;
+    let typingStarted = false;
+
+    function startTyping() {
+      if (typingStarted) return;
+      typingStarted = true;
+      index = 0;
+      document.getElementById("text").textContent = "";
+      typeWriter();
+    }
+
+    function typeWriter() {
+      if (index < message.length) {
+        document.getElementById("text").textContent += message.charAt(index);
+        index++;
+        setTimeout(typeWriter, 120);
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
+#page 2
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fairy Section</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff4ec;
+    }
+
+    /* SECTION */
+    .fairy-section {
+      min-height: 100vh;
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .fairy-title {
+      font-size: 2.6rem;
+      margin-bottom: 4rem;
+      color: #7a1f1f;
+      font-family: cursive;
+    }
+
+    /* GRID */
+    .fairy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 4rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* CARD */
+    .fairy-card {
+      opacity: 0;
+      transform: translateY(70px) scale(0.95);
+      transition: all 1.2s ease;
+    }
+
+    .fairy-card.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* IMAGE FRAME */
+    .fairy-frame {
+      position: relative;
+      padding: 16px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #ffd1e8, #ffe6b3);
+      box-shadow: 0 0 45px rgba(255, 105, 180, 0.4);
+      overflow: hidden;
+    }
+
+    /* FAIRY AURA */
+    .fairy-frame::before {
+      content: "";
+      position: absolute;
+      inset: -25px;
+      background: radial-gradient(circle, rgba(255,182,193,0.6), transparent 70%);
+      animation: auraPulse 4s infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes auraPulse {
+      from { opacity: 0.4; }
+      to { opacity: 0.9; }
+    }
+
+    .fairy-frame img {
+      width: 100%;
+      height: 300px; /* BIGGER IMAGE */
+      object-fit: cover;
+      border-radius: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* PARTICLE LAYERS */
+    .heart-layer,
+    .sparkle-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* TEXT */
+    .fairy-text {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #000;
+    }
+
+    /* ❤️ HEARTS */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      animation: floatHeart 4s ease forwards;
+      opacity: 0.9;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-180px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* ✨ SPARKLES */
+    .sparkle {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: pink;
+      box-shadow: 0 0 12px rgba(255,182,193,0.9);
+      animation: sparkleFloat 5s linear forwards;
+    }
+
+    @keyframes sparkleFloat {
+      from {
+        transform: translateY(40px) scale(0.5);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-160px) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    /* 🔥 FAIRY FIRE */
+    .fire {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, #ff9a9e, transparent);
+      border-radius: 50%;
+      animation: fireFly 3s ease-out forwards;
+    }
+
+    @keyframes fireFly {
+      from {
+        transform: translateY(30px) scale(0.3);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-120px) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="fairy-section" id="fairy">
+    <h2 class="fairy-title">Little moments for you 💗</h2>
+
+    <div class="fairy-grid">
+
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXaFp4t03rNkv1HRS1sxApf_-dirzMuSUM1Q&s" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">
+          abcdfgiuafigudfyugudfguifua<br>
+          gfiud<br>
+          jsdfhs8fse
+        </p>
+      </div>
+
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="data:image/jpeg;base64,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" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">
+          abcdfgiuafigudfyugudfguifua<br>
+          gfiud<br>
+          jsdfhs8fse
+        </p>
+      </div>
+
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="data:image/jpeg;base64,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" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">
+          abcdfgiuafigudfyugudfguifua<br>
+          gfiud<br>
+          jsdfhs8fse
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+  const cards = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+
+        const frame = entry.target.querySelector(".fairy-frame");
+
+        if (!frame.dataset.started) {
+          frame.dataset.started = "true";
+
+          const sparkleLayer = document.createElement("div");
+          sparkleLayer.className = "sparkle-layer";
+          frame.appendChild(sparkleLayer);
+
+          startFairyEffects(
+            entry.target.querySelector(".heart-layer"),
+            sparkleLayer
+          );
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+
+  cards.forEach(card => observer.observe(card));
+
+  function startFairyEffects(heartLayer, sparkleLayer) {
+
+    /* ❤️ CONTINUOUS HEART BUBBLES */
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💗";
+      heart.style.left = Math.random() * 90 + "%";
+      heart.style.fontSize = (14 + Math.random() * 18) + "px";
+      heartLayer.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 4000);
+    }, 600); // controls heart frequency
+
+    /* ✨ CONTINUOUS SPARKLES */
+    setInterval(() => {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.style.left = Math.random() * 100 + "%";
+      sparkle.style.bottom = Math.random() * 30 + "px";
+      sparkleLayer.appendChild(sparkle);
+
+      setTimeout(() => sparkle.remove(), 5000);
+    }, 900);
+
+    /* 🔥 FAIRY FIRE FLIES */
+    setInterval(() => {
+      const fire = document.createElement("div");
+      fire.className = "fire";
+      fire.style.left = Math.random() * 100 + "%";
+      fire.style.bottom = "0px";
+      sparkleLayer.appendChild(fire);
+
+      setTimeout(() => fire.remove(), 3000);
+    }, 1200);
+  }
+</script>
+
+
+</body>
+</html>
+# merge trial 1 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moments For You</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Trad&display=swap" rel="stylesheet">
+
+  <style>
+    /* GLOBAL STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #FFF2C6; /* Page 1 background */
+      overflow-x: hidden;
+    }
+
+    /* --- PAGE 1 STYLES --- */
+    .hero-section {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Playwrite US Trad', cursive;
+    }
+
+    /* Background hearts for Page 1 */
+    .bg-heart {
+      position: absolute;
+      color: #ff9db5;
+      font-size: 2.2rem;
+      opacity: 0.9;
+      animation: floatBG 10s linear infinite;
+    }
+
+    @keyframes floatBG {
+      0% {
+        transform: translateY(100vh) scale(0.9);
+        opacity: 0;
+      }
+      20% { opacity: 0.9; }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .hero-container {
+      text-align: center;
+      background: #FFF8DE;
+      padding: 3rem 4rem;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-container h1 {
+      font-size: 2.5rem;
+      color: #7a1f1f;
+      min-height: 3.5rem;
+      white-space: nowrap;
+    }
+
+    .hero-button {
+      margin-top: 2rem;
+      padding: 0.7rem 1.6rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      background: #ff9db5;
+      color: #7a1f1f;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* --- PAGE 2 STYLES (Fairy Section) --- */
+    .fairy-section {
+      min-height: 100vh;
+      padding: 6rem 2rem;
+      text-align: center;
+      background: #fff4ec; /* Page 2 background */
+      font-family: Arial, sans-serif;
+    }
+
+    .fairy-title {
+      font-size: 2.6rem;
+      margin-bottom: 4rem;
+      color: #7a1f1f;
+      font-family: cursive;
+    }
+
+    .fairy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 4rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .fairy-card {
+      opacity: 0;
+      transform: translateY(70px) scale(0.95);
+      transition: all 1.2s ease;
+    }
+
+    .fairy-card.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .fairy-frame {
+      position: relative;
+      padding: 16px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #ffd1e8, #ffe6b3);
+      box-shadow: 0 0 45px rgba(255, 105, 180, 0.4);
+      overflow: hidden;
+    }
+
+    .fairy-frame::before {
+      content: "";
+      position: absolute;
+      inset: -25px;
+      background: radial-gradient(circle, rgba(255,182,193,0.6), transparent 70%);
+      animation: auraPulse 4s infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes auraPulse {
+      from { opacity: 0.4; }
+      to { opacity: 0.9; }
+    }
+
+    .fairy-frame img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .heart-layer, .sparkle-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .fairy-text {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #000;
+    }
+
+    /* Animation Hearts for Cards */
+    .fairy-heart {
+      position: absolute;
+      bottom: -20px;
+      animation: floatHeart 4s ease forwards;
+      opacity: 0.9;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) scale(0.6); opacity: 1; }
+      100% { transform: translateY(-180px) scale(1.5); opacity: 0; }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: pink;
+      box-shadow: 0 0 12px rgba(255,182,193,0.9);
+      animation: sparkleFloat 5s linear forwards;
+    }
+
+    @keyframes sparkleFloat {
+      from { transform: translateY(40px) scale(0.5); opacity: 1; }
+      to { transform: translateY(-160px) scale(1.3); opacity: 0; }
+    }
+
+    .fire {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, #ff9a9e, transparent);
+      border-radius: 50%;
+      animation: fireFly 3s ease-out forwards;
+    }
+
+    @keyframes fireFly {
+      from { transform: translateY(30px) scale(0.3); opacity: 1; }
+      to { transform: translateY(-120px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero-section">
+    <div class="bg-heart" style="left: 5%; animation-delay: 0s;">♥</div>
+    <div class="bg-heart" style="left: 12%; animation-delay: 2s;">♡</div>
+    <div class="bg-heart" style="left: 20%; animation-delay: 4s;">♥</div>
+    <div class="bg-heart" style="left: 28%; animation-delay: 1s;">♡</div>
+    <div class="bg-heart" style="left: 36%; animation-delay: 3s;">♥</div>
+    <div class="bg-heart" style="left: 44%; animation-delay: 5s;">♡</div>
+    <div class="bg-heart" style="left: 52%; animation-delay: 2s;">♥</div>
+    <div class="bg-heart" style="left: 60%; animation-delay: 4s;">♡</div>
+    <div class="bg-heart" style="left: 68%; animation-delay: 1s;">♥</div>
+    <div class="bg-heart" style="left: 76%; animation-delay: 3s;">♡</div>
+    <div class="bg-heart" style="left: 84%; animation-delay: 5s;">♥</div>
+    <div class="bg-heart" style="left: 92%; animation-delay: 2s;">♡</div>
+
+    <div class="hero-container">
+      <h1 id="typewriter-text"></h1>
+      <button class="hero-button" onclick="startTyping()">this is for you !</button>
+    </div>
+  </section>
+
+  <section class="fairy-section" id="fairy">
+    <h2 class="fairy-title">Little moments for you 💗</h2>
+
+    <div class="fairy-grid">
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXaFp4t03rNkv1HRS1sxApf_-dirzMuSUM1Q&s" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">
+          abcdfgiuafigudfyugudfguifua<br>
+          gfiud<br>
+          jsdfhs8fse
+        </p>
+      </div>
+
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXaFp4t03rNkv1HRS1sxApf_-dirzMuSUM1Q&s" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">
+          abcdfgiuafigudfyugudfguifua<br>
+          gfiud<br>
+          jsdfhs8fse
+        </p>
+      </div>
+
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXaFp4t03rNkv1HRS1sxApf_-dirzMuSUM1Q&s" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">
+          abcdfgiuafigudfyugudfguifua<br>
+          gfiud<br>
+          jsdfhs8fse
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* --- PAGE 1 SCRIPT --- */
+    const message = "Have a great dayyy";
+    let typeIndex = 0;
+    let typingStarted = false;
+
+    function startTyping() {
+      if (typingStarted) return;
+      typingStarted = true;
+      typeIndex = 0;
+      document.getElementById("typewriter-text").textContent = "";
+      typeWriter();
+    }
+
+    function typeWriter() {
+      if (typeIndex < message.length) {
+        document.getElementById("typewriter-text").textContent += message.charAt(typeIndex);
+        typeIndex++;
+        setTimeout(typeWriter, 120);
+      }
+    }
+
+    /* --- PAGE 2 SCRIPT --- */
+    const cards = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          const frame = entry.target.querySelector(".fairy-frame");
+
+          if (!frame.dataset.started) {
+            frame.dataset.started = "true";
+            const sparkleLayer = document.createElement("div");
+            sparkleLayer.className = "sparkle-layer";
+            frame.appendChild(sparkleLayer);
+
+            startFairyEffects(
+              entry.target.querySelector(".heart-layer"),
+              sparkleLayer
+            );
+          }
+        }
+      });
+    }, { threshold: 0.4 });
+
+    cards.forEach(card => observer.observe(card));
+
+    function startFairyEffects(heartLayer, sparkleLayer) {
+      // Continuous Heart Bubbles
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "fairy-heart";
+        heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💗";
+        heart.style.left = Math.random() * 90 + "%";
+        heart.style.fontSize = (14 + Math.random() * 18) + "px";
+        heartLayer.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }, 600);
+
+      // Continuous Sparkles
+      setInterval(() => {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = Math.random() * 100 + "%";
+        sparkle.style.bottom = Math.random() * 30 + "px";
+        sparkleLayer.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 5000);
+      }, 900);
+
+      // Fairy Fire Flies
+      setInterval(() => {
+        const fire = document.createElement("div");
+        fire.className = "fire";
+        fire.style.left = Math.random() * 100 + "%";
+        fire.style.bottom = "0px";
+        sparkleLayer.appendChild(fire);
+        setTimeout(() => fire.remove(), 3000);
+      }, 1200);
+    }
+  </script>
+</body>
+</html>
+
+# final 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moments For You</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Trad&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- GLOBAL STYLES --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    /* --- PAGE 1: HERO SECTION (Yellow) --- */
+    .hero-section {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FFF2C6;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Playwrite US Trad', cursive;
+    }
+
+    .bg-heart-p1 {
+      position: absolute;
+      color: #ff9db5;
+      font-size: 2.2rem;
+      opacity: 0.9;
+      animation: floatBG 10s linear infinite;
+    }
+
+    @keyframes floatBG {
+      0% { transform: translateY(100vh) scale(0.9); opacity: 0; }
+      20% { opacity: 0.9; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    .hero-container {
+      text-align: center;
+      background: #FFF8DE;
+      padding: 3rem 4rem;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-container h1 {
+      font-size: 2.5rem;
+      color: #7a1f1f;
+      min-height: 3.5rem;
+    }
+
+    .hero-button {
+      margin-top: 2rem;
+      padding: 0.7rem 1.6rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      background: #ff9db5;
+      color: #7a1f1f;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.2s;
+    }
+
+    /* --- PAGE 2: FAIRY SECTION (Peach) --- */
+    .fairy-section {
+      min-height: 100vh;
+      padding: 6rem 2rem;
+      text-align: center;
+      background: #fff4ec;
+    }
+
+    .fairy-title {
+      font-size: 2.6rem;
+      margin-bottom: 4rem;
+      color: #7a1f1f;
+      font-family: cursive;
+    }
+
+    .fairy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 4rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .fairy-card {
+      opacity: 0;
+      transform: translateY(70px) scale(0.95);
+      transition: all 1.2s ease;
+    }
+
+    .fairy-card.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .fairy-frame {
+      position: relative;
+      padding: 16px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #ffd1e8, #ffe6b3);
+      box-shadow: 0 0 45px rgba(255, 105, 180, 0.4);
+      overflow: hidden;
+    }
+
+    .fairy-frame::before {
+      content: "";
+      position: absolute;
+      inset: -25px;
+      background: radial-gradient(circle, rgba(255,182,193,0.6), transparent 70%);
+      animation: auraPulse 4s infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes auraPulse {
+      from { opacity: 0.4; }
+      to { opacity: 0.9; }
+    }
+
+    .fairy-frame img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .heart-layer, .sparkle-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .fairy-text {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #000;
+    }
+
+    /* Fairy Particles */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      animation: floatHeart 4s ease forwards;
+      opacity: 0.9;
+    }
+    @keyframes floatHeart {
+      0% { transform: translateY(0) scale(0.6); opacity: 1; }
+      100% { transform: translateY(-180px) scale(1.5); opacity: 0; }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: pink;
+      box-shadow: 0 0 12px rgba(255,182,193,0.9);
+      animation: sparkleFloat 5s linear forwards;
+    }
+    @keyframes sparkleFloat {
+      from { transform: translateY(40px) scale(0.5); opacity: 1; }
+      to { transform: translateY(-160px) scale(1.3); opacity: 0; }
+    }
+
+    .fire {
+      position: absolute;
+      width: 12px; height: 12px;
+      background: radial-gradient(circle, #ff9a9e, transparent);
+      border-radius: 50%;
+      animation: fireFly 3s ease-out forwards;
+    }
+    @keyframes fireFly {
+      from { transform: translateY(30px) scale(0.3); opacity: 1; }
+      to { transform: translateY(-120px) scale(1.5); opacity: 0; }
+    }
+
+    /* --- PAGE 3: LETTER SECTION (Blue) --- */
+    .letter-section {
+      height: 100vh;
+      background-color: #a7c7f9;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column; /* Stacks button and letter vertically */
+      align-items: center;
+      justify-content: center;
+      gap: 20px; /* Space between the button and the letter */
+    }
+
+    .open-btn {
+      z-index: 100;
+      background-color: #ff91b4;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .open-btn:active {
+      transform: scale(0.95);
+    }
+
+    .letter {
+      background-color: #ffcbb3;
+      padding: 25px 30px;
+      border-radius: 15px;
+      width: 320px;
+      font-size: 16px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    .letter.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .floating-heart-p3 {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff6f8a;
+      transform: rotate(-45deg);
+      animation: floatP3 6s linear infinite;
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+    .floating-heart-p3::before, .floating-heart-p3::after {
+      content: "";
+      position: absolute;
+      width: 20px; height: 20px;
+      background-color: #ff6f8a;
+      border-radius: 50%;
+    }
+    .floating-heart-p3::before { top: -10px; left: 0; }
+    .floating-heart-p3::after { left: 10px; top: 0; }
+
+    @keyframes floatP3 {
+      0% { transform: translate(0,0) rotate(-45deg); opacity: 0.8; }
+      50% { transform: translate(calc(var(--x) * 1px), -100px) rotate(-45deg); opacity: 1; }
+      100% { transform: translate(calc(var(--x) * 2px), -200px) rotate(-45deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero-section">
+    <div class="bg-heart-p1" style="left: 5%; animation-delay: 0s;">♥</div>
+    <div class="bg-heart-p1" style="left: 25%; animation-delay: 2s;">♡</div>
+    <div class="bg-heart-p1" style="left: 50%; animation-delay: 4s;">♥</div>
+    <div class="bg-heart-p1" style="left: 75%; animation-delay: 1s;">♡</div>
+    <div class="bg-heart-p1" style="left: 90%; animation-delay: 3s;">♥</div>
+
+    <div class="hero-container">
+      <h1 id="typewriter-text"></h1>
+      <button class="hero-button" onclick="startTyping()"> from shruvii!</button>
+    </div>
+  </section>
+
+  <section class="fairy-section" id="fairy">
+    <h2 class="fairy-title">Little moments for you 💗</h2>
+    <div class="fairy-grid">
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXaFp4t03rNkv1HRS1sxApf_-dirzMuSUM1Q&s" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">abcdfgiuafigudfyugudfguifua<br>gfiud<br>jsdfhs8fse</p>
+      </div>
+
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXaFp4t03rNkv1HRS1sxApf_-dirzMuSUM1Q&s" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">abcdfgiuafigudfyugudfguifua<br>gfiud<br>jsdfhs8fse</p>
+      </div>
+
+      <div class="fairy-card reveal">
+        <div class="fairy-frame">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXaFp4t03rNkv1HRS1sxApf_-dirzMuSUM1Q&s" alt="memory">
+          <div class="heart-layer"></div>
+        </div>
+        <p class="fairy-text">abcdfgiuafigudfyugudfguifua<br>gfiud<br>jsdfhs8fse</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="letter-section">
+    <button class="open-btn" id="openBtn">open me</button>
+    
+    <div class="letter" id="letter">
+      <p>Hey friend! Just wanted to send you a little love and a reminder that you’re awesome. Keep shining bright and never stop being you! 💖</p>
+    </div>
+
+    <div class="floating-heart-p3" style="left: 10%; top: 90%; animation-delay: 0s; --x: 20;"></div>
+    <div class="floating-heart-p3" style="left: 80%; top: 95%; animation-delay: 1s; --x: -30;"></div>
+    <div class="floating-heart-p3" style="left: 50%; top: 85%; animation-delay: 2s; --x: 15;"></div>
+    <div class="floating-heart-p3" style="left: 30%; top: 90%; animation-delay: 0.5s; --x: -20;"></div>
+    <div class="floating-heart-p3" style="left: 70%; top: 92%; animation-delay: 1.5s; --x: 25;"></div>
+
+    <audio id="bgMusic" src="perfect.mp3" preload="auto"></audio>
+  </section>
+
+  <script>
+    /* TYPEWRITER SCRIPT */
+    const message = "I love you so much ";
+    let typeIndex = 0;
+    let typingStarted = false;
+    function startTyping() {
+      if (typingStarted) return;
+      typingStarted = true;
+      typeWriter();
+    }
+    function typeWriter() {
+      if (typeIndex < message.length) {
+        document.getElementById("typewriter-text").textContent += message.charAt(typeIndex);
+        typeIndex++;
+        setTimeout(typeWriter, 120);
+      }
+    }
+
+    /* FAIRY OBSERVER SCRIPT */
+    const cards = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          const frame = entry.target.querySelector(".fairy-frame");
+          if (!frame.dataset.started) {
+            frame.dataset.started = "true";
+            const sparkleLayer = document.createElement("div");
+            sparkleLayer.className = "sparkle-layer";
+            frame.appendChild(sparkleLayer);
+            startFairyEffects(entry.target.querySelector(".heart-layer"), sparkleLayer);
+          }
+        }
+      });
+    }, { threshold: 0.4 });
+    cards.forEach(card => observer.observe(card));
+
+    function startFairyEffects(heartLayer, sparkleLayer) {
+      setInterval(() => {
+        const h = document.createElement("div"); h.className = "heart";
+        h.innerHTML = Math.random() > 0.5 ? "❤️" : "💗";
+        h.style.left = Math.random() * 90 + "%";
+        h.style.fontSize = (14 + Math.random() * 18) + "px";
+        heartLayer.appendChild(h); setTimeout(() => h.remove(), 4000);
+      }, 600);
+      setInterval(() => {
+        const s = document.createElement("div"); s.className = "sparkle";
+        s.style.left = Math.random() * 100 + "%"; s.style.bottom = Math.random() * 30 + "px";
+        sparkleLayer.appendChild(s); setTimeout(() => s.remove(), 5000);
+      }, 900);
+      setInterval(() => {
+        const f = document.createElement("div"); f.className = "fire";
+        f.style.left = Math.random() * 100 + "%"; f.style.bottom = "0px";
+        sparkleLayer.appendChild(f); setTimeout(() => f.remove(), 3000);
+      }, 1200);
+    }
+
+    /* LETTER SCRIPT */
+    const openBtn = document.getElementById('openBtn');
+    const letter = document.getElementById('letter');
+    const bgMusic = document.getElementById('bgMusic');
+    openBtn.addEventListener('click', () => {
+      letter.classList.toggle('show');
+      if (letter.classList.contains('show')) {
+        bgMusic.play().catch(() => {
+            console.log("Music couldn't play automatically; needs user interaction.");
+        });
+        openBtn.textContent = "close me";
+      } else {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        openBtn.textContent = "open me";
+      }
+    });
+  </script>
+</body>
+</html>
